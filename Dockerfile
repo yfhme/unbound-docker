@@ -43,6 +43,8 @@ RUN apk update && apk upgrade && \
     chown unbound:unbound /opt/unbound/etc/unbound/unbound.log && \
     /opt/unbound/sbin/unbound-anchor -F -v -a /opt/unbound/etc/unbound/var/root.key || true
 
+COPY --chown=unbound:unbound configs/ /opt/unbound/etc/unbound/
+
 WORKDIR /opt/unbound/
 
 LABEL org.opencontainers.image.title="yfhme/unbound-docker"
