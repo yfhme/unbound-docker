@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": [
+    "dev"
+  ],
+  "prConcurrentLimit": 1,
+  "extends": [
+    "github>yfhme/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchPackageNames": [
+        "NLnetLabs/unbound"
+      ],
+      "extractVersion": "^release-(?<version>.*)$"
+    }
+  ]
+}
