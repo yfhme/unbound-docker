@@ -43,9 +43,10 @@ jobs:
           context: .
           load: true
           tags: ${{ env.TEST_TAG }}
+
       - name: Test container
         run: |
-          docker run --rm ${{ env.TEST_TAG }} /bin/sh
+          docker run --rm --entrypoint /opt/unbound/sbin/unbound ${{ env.TEST_TAG }} -V
 
       - name: Build and push
         if: ${{ github.event_name != 'pull_request' }}
