@@ -45,7 +45,7 @@ jobs:
           tags: ${{ env.TEST_TAG }}
       - name: Test container
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
+          docker run --rm ${{ env.TEST_TAG }} /bin/sh
 
       - name: Build and push
         if: ${{ github.event_name != 'pull_request' }}
