@@ -29,7 +29,7 @@ RUN build_deps="build-base expat-dev libssl3" && \
     apk del -r $build_deps libevent-dev libexpat && \
     rm -rf /opt/unbound/share/man
 
-FROM alpine:3.19.0@sha256:51b67269f354137895d43f3b3d810bfacd3945438e94dc5ac55fdac340352f48 as unbound
+FROM alpine:3.19.1@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b as unbound
 
 COPY --from=build /opt /opt
 
