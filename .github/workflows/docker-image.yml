@@ -5,8 +5,12 @@ on:
     tags:
       - "v*.*.*"
   pull_request:
+    paths-ignore:
+      - "**/renovate.json"
     branches:
       - "main"
+  schedule:
+    - cron: "0 1 * * 4"
 
 env:
   REGISTRY_IMAGE: yfhme/unbound-docker
@@ -24,6 +28,10 @@ jobs:
         uses: docker/metadata-action@dbef88086f6cef02e264edb7dbf63250c17cef6c # v5.5.0
         with:
           images: ${{ env.REGISTRY_IMAGE }}
+          tags: |
+            type=schedule,pattern=weekly
+            type=semver,pattern={{raw}}
+            type=edge,branch=main
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3.0.0
