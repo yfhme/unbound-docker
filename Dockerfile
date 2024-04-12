@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
 
-FROM yfhme/openssl-docker:v3.2.1@sha256:187f4cb018b73575ede183f06328c901c5703425eabaa09aca8d40f5a8a1cd81 as build
+FROM yfhme/openssl-docker:v3.3.0@sha256:3fd176de74d9020c249752641990f2f4cf9e9d60615b192962862ab6aa56b701 as build
 
 # renovate: datasource=github-tags depName=NLnetLabs/unbound
 ENV UNBOUND_VERSION=1.19.2
