@@ -4,7 +4,7 @@ FROM yfhme/openssl-docker:v3.3.0@sha256:3fd176de74d9020c249752641990f2f4cf9e9d60
 
 # renovate: datasource=github-tags depName=NLnetLabs/unbound
 ENV UNBOUND_VERSION=1.20.0
-ENV UNBOUND_SHA256=3ae322be7dc2f831603e4b0391435533ad5861c2322e34a76006a9fb65eb56b9
+ENV UNBOUND_SHA256=56b4ceed33639522000fd96775576ddf8782bb3617610715d7f1e777c5ec1dbf
 ENV UNBOUND_DOWNLOAD_URL=https://nlnetlabs.nl/downloads/unbound/unbound-$UNBOUND_VERSION.tar.gz
 
 ADD --checksum=sha256:$UNBOUND_SHA256 $UNBOUND_DOWNLOAD_URL /tmp/src/
