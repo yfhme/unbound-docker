@@ -1,16 +1,19 @@
-name: docker build and push
+name: Docker Build And Push
 
 on:
+  merge_group:
   push:
     tags:
       - "v*.*.*"
+    branches:
+      - "renovate/**"
   pull_request:
     paths-ignore:
       - "**/renovate.json"
     branches:
       - "main"
   schedule:
-    - cron: "0 1 * * 4"
+    - cron: "0 3 * * 2"
 
 env:
   REGISTRY_IMAGE: yfhme/unbound-docker
@@ -40,6 +43,7 @@ jobs:
         uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb # v3.3.0
 
       - name: Login to Docker Hub
+        if: github.event.ref_type == ('tag'|| 'schedule')
         uses: docker/login-action@e92390c5fb421da1463c202d546fed0ec5c39f20 # v3.1.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -57,7 +61,7 @@ jobs:
           docker run --rm --entrypoint /opt/unbound/sbin/unbound ${{ env.TEST_TAG }} -V
 
       - name: Build and push
-        if: ${{ github.event_name != 'pull_request' }}
+        if: github.event.ref_type == ('tag' || 'schedule')
         id: build
         uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5.3.0
         with:
