@@ -1,21 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": [
-    "dev"
-  ],
-  "prConcurrentLimit": 1,
-  "extends": [
-    "github>yfhme/renovate-config"
-  ],
+  "baseBranches": ["dev"],
+  "prConcurrentLimit": 3,
+  "extends": ["github>yfhme/renovate-config"],
+  "dependencyDashboard": true,
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "matchManagers": [
-        "custom.regex"
-      ],
-      "matchPackageNames": [
-        "NLnetLabs/unbound"
-      ],
+      "matchManagers": ["custom.regex"],
+      "matchPackageNames": ["NLnetLabs/unbound"],
       "extractVersion": "^release-(?<version>.*)$"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "schedule": ["on Tuesday and Friday before 3am"],
+      "automerge": true,
+      "automergeStrategy": "rebase"
     }
   ]
 }
