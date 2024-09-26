@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.10.0@sha256:865e5dd094beca432e8c0a1d5e1c465db5f998dca4e439981029b3b81fb39ed5
 
-FROM yfhme/openssl-docker:v3.3.1@sha256:45914555e17d16c570c55416bca8ed06ffe8734c9037a082f1137cb5fc1a3067 as build
+FROM yfhme/openssl-docker:v3.3.1@sha256:45914555e17d16c570c55416bca8ed06ffe8734c9037a082f1137cb5fc1a3067 AS build
 
 # renovate: datasource=github-tags depName=NLnetLabs/unbound
 ENV UNBOUND_VERSION=1.21.0
@@ -29,7 +29,7 @@ RUN build_deps="build-base expat-dev libssl3" && \
     apk del -r $build_deps libevent-dev libexpat && \
     rm -rf /opt/unbound/share/man
 
-FROM alpine:3.20.3@sha256:a8f120106f5549715aa966fd7cefaf3b7045f6414fed428684de62fec8c2ca4b as unbound
+FROM alpine:3.20.3@sha256:a8f120106f5549715aa966fd7cefaf3b7045f6414fed428684de62fec8c2ca4b AS unbound
 
 COPY --from=build /opt /opt
 
