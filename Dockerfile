@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.10.0@sha256:865e5dd094beca432e8c0a1d5e1c465db5f998dca4e439981029b3b81fb39ed5
+# syntax=docker/dockerfile:1.11.1@sha256:10c699f1b6c8bdc8f6b4ce8974855dd8542f1768c26eb240237b8f1c9c6c9976
 
 FROM yfhme/openssl-docker:v3.3.2@sha256:4c835d5f1d33f91b42f73890e6319f0d1be1e9dbc63ae7ee0be71673b3d0736e AS build
 
